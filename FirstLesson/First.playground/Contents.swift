@@ -86,4 +86,32 @@ func maxSubArrray_divide(_ array: [Int], _ from: Int, _ to: Int) -> Int {
 
 maxSubArrray_divide(testArray, 0, 7)
 
+// TODO:- 4.动态规划
+// 记S[i]为以A[i]结尾的数组中和最大的子数组
+// 则:S[i+1] = max(S[i]+A[i+1], A[i+1])
+// S[0]=A[0]
+
+func maxSubArray_dynamic(_ array: [Int]) -> Int {
+    
+    var result = array[0]
+
+    var sum = array[0]
+
+    for i in 0..<array.count {
+        if sum > 0 {
+            sum += array[i]
+        } else {
+            sum = array[i]
+        }
+
+        if sum > result {
+            result = sum
+        }
+    }
+
+    return result
+}
+
+maxSubArray_dynamic(testArray)
+
 
