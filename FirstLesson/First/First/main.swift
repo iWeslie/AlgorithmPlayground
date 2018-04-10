@@ -170,13 +170,48 @@ print("searchMin: \t\(searchMin(testArray2))")
 // zk=xm=yn
 // LCS(Xm , Yn) = LCS(Xm-1 , Yn-1) + xm
 
+let x: [Character] = ["A", "B", "C", "B", "D", "A", "B"]
+let y: [Character] = ["B", "D", "C", "A", "B", "A"]
+
 func LCS_length(array1: [Character], array2: [Character]) -> [[Int]] {
+    
+    var count = [[Int]]()
+    var arrow = [[Character]]()
     
     let m = array1.count
     let n = array2.count
     
+    for _ in 0...m {
+        let arrA = Array(repeating: 0, count: n + 1)
+        count.append(arrA)
+        let arrB = Array(repeating: Character("-"), count: n + 1)
+        arrow.append(arrB)
+    }
+    
+    print(count)
+    print(arrow)
+    
+    for i in 1..<m {
+        for j in 1..<n {
+            if array1[i] == array2[j] {
+                count[i][j] = count[i - 1][j - 1] + 1
+                arrow[i][j] = "↖︎"
+            } else if count[i - 1][j] >= count[i][j - 1] {
+                count[i][j] = count[i - 1][j]
+                arrow[i][j] = "↑"
+            } else {
+                count[i][j] = count[i][j - 1]
+                arrow[i][j] = "←"
+            }
+        }
+    }
+    return count
     
 }
+
+LCS_length(array1: x, array2: y)
+print(LCS_length(array1: x, array2: y))
+
 
 
 
