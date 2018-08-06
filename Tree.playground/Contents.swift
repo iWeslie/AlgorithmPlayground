@@ -623,3 +623,764 @@ extension RedBlackTree {
         
     }
 }
+
+//: # Heap
+// A heap is a binary tree inside an array, so it does not use parent/child pointers. A heap is sorted based on the "heap property" that determines the order of the nodes in the tree.
+// Common uses for heap:
+
+// To build priority queues.
+// To support heap sorts.
+// To compute the minimum (or maximum) element of a collection quickly.
+// To impress your non-programmer friends.
+
+public struct Heap<T> {
+    /** The array that stores the heap's nodes. */
+    var nodes = [T]()
+    
+    /**
+     * Determines how to compare two nodes in the heap.
+     * Use '>' for a max-heap or '<' for a min-heap,
+     * or provide a comparing method if the heap is made
+     * of custom elements, for example tuples.
+     */
+    private var orderCriteria: (T, T) -> Bool
+    
+    /**
+     * Creates an empty heap.
+     * The sort function determines whether this is a min-heap or max-heap.
+     * For comparable data types, > makes a max-heap, < makes a min-heap.
+     */
+    public init(sort: @escaping (T, T) -> Bool) {
+        self.orderCriteria = sort
+    }
+    
+    /**
+     * Creates a heap from an array. The order of the array does not matter;
+     * the elements are inserted into the heap in the order determined by the
+     * sort function. For comparable data types, '>' makes a max-heap,
+     * '<' makes a min-heap.
+     */
+    public init(array: [T],sort: @escaping (T, T) -> Bool) {
+        self.orderCriteria = sort
+        configureHeap(from: array)
+    }
+    
+    /**
+     * Configures the max-heap or min-heap from an array, in a bottom-up manner.
+     * Performance: This runs pretty much in O(n).
+     */
+    private mutating func configureHeap(from array: [T]) {
+        nodes = array
+        for i in stride(from: (nodes.count / 2 - 1), through: 0, by: -1) {
+            shiftDown(i)
+        }
+        shiftDown(0)
+    }
+    
+    public var isEmpty: Bool {
+        return nodes.isEmpty
+    }
+    
+    public var count: Int {
+        return nodes.count
+    }
+    
+    /**
+     * Returns the index of the parent of the element at index i.
+     * The element at index 0 is the root of the tree and has no parent.
+     */
+    @inline(__always) internal func parentIndex(ofIndex i: Int) -> Int {
+        return (i - 1) / 2
+    }
+    
+    /**
+     * Returns the index of the left child of the element at index i.
+     * Note that this index can be greater than the heap size, in which case
+     * there is no left child.
+     */
+    @inline(__always) internal func leftChildIndex(ofIndex i: Int) -> Int {
+        return 2 * i + 1
+    }
+    
+    /**
+     * Returns the index of the right child of the element at index i.
+     * Note that this index can be greater than the heap size, in which case
+     * there is no right child.
+     */
+    @inline(__always) internal func rightChildIndex(ofIndex i: Int) -> Int {
+        return 2 * i + 2
+    }
+    
+    /**
+     * Returns the maximum value in the heap (for a max-heap) or the minimum
+     * value (for a min-heap).
+     */
+    public func peek() -> T? {
+        return nodes.first
+    }
+    
+    /**
+     * Adds a new value to the heap. This reorders the heap so that the max-heap
+     * or min-heap property still holds. Performance: O(log n).
+     */
+    public mutating func insert(_ value: T) {
+        nodes.append(value)
+        shiftUp(nodes.count - 1)
+    }
+    
+    /**
+     * Adds a sequence of values to the heap. This reorders the heap so that
+     * the max-heap or min-heap property still holds. Performance: O(log n).
+     */
+    public mutating func insert<S: Sequence>(_ sequence: S) where S.Iterator.Element == T {
+        for value in sequence {
+            insert(value)
+        }
+    }
+    
+    /**
+     * Allows you to change an element. This reorders the heap so that
+     * the max-heap or min-heap property still holds.
+     */
+    public mutating func replace(index i: Int, value: T) {
+        guard i < nodes.count else { return }
+        
+        remove(at: i)
+        insert(value)
+    }
+    
+    /**
+     * Removes the root node from the heap. For a max-heap, this is the maximum
+     * value; for a min-heap it is the minimum value. Performance: O(log n).
+     */
+    @discardableResult public mutating func remove() -> T? {
+        guard !nodes.isEmpty else { return nil }
+        
+        if nodes.count == 1 {
+            return nodes.removeLast()
+        } else {
+            // Use the last node to replace the first one, then fix the heap by
+            // shifting this new first node into its proper position.
+            let value = nodes[0]
+            nodes[0] = nodes.removeLast()
+            shiftDown(0)
+            return value
+        }
+    }
+    
+    /**
+     * Removes an arbitrary node from the heap. Performance: O(log n).
+     * Note that you need to know the node's index.
+     */
+    @discardableResult public mutating func remove(at index: Int) -> T? {
+        guard index < nodes.count else { return nil }
+        
+        let size = nodes.count - 1
+        if index != size {
+            nodes.swapAt(index, size)
+            shiftDown(from: index, until: size)
+            shiftUp(index)
+        }
+        return nodes.removeLast()
+    }
+    
+    /**
+     * Takes a child node and looks at its parents; if a parent is not larger
+     * (max-heap) or not smaller (min-heap) than the child, we exchange them.
+     */
+    internal mutating func shiftUp(_ index: Int) {
+        print("Core Function -> Reorder the heap")
+        var childIndex = index
+        let child = nodes[childIndex]
+        var parentIndex = self.parentIndex(ofIndex: childIndex)
+        
+        while childIndex > 0 && orderCriteria(child, nodes[parentIndex]) {
+            nodes[childIndex] = nodes[parentIndex]
+            childIndex = parentIndex
+            parentIndex = self.parentIndex(ofIndex: childIndex)
+        }
+        
+        nodes[childIndex] = child
+    }
+    
+    /**
+     * Looks at a parent node and makes sure it is still larger (max-heap) or
+     * smaller (min-heap) than its childeren.
+     */
+    internal mutating func shiftDown(from index: Int, until endIndex: Int) {
+        let leftChildIndex = self.leftChildIndex(ofIndex: index)
+        let rightChildIndex = leftChildIndex + 1
+        
+        // Figure out which comes first if we order them by the sort function:
+        // the parent, the left child, or the right child. If the parent comes
+        // first, we're done. If not, that element is out-of-place and we make
+        // it "float down" the tree until the heap property is restored.
+        var first = index
+        if leftChildIndex < endIndex && orderCriteria(nodes[leftChildIndex], nodes[first]) {
+            first = leftChildIndex
+        }
+        if rightChildIndex < endIndex && orderCriteria(nodes[rightChildIndex], nodes[first]) {
+            first = rightChildIndex
+        }
+        if first == index { return }
+        
+        nodes.swapAt(index, first)
+        shiftDown(from: first, until: endIndex)
+    }
+    
+    internal mutating func shiftDown(_ index: Int) {
+        shiftDown(from: index, until: nodes.count)
+    }
+}
+
+// MARK: - Searching
+extension Heap where T: Equatable {
+    /** Get the index of a node in the heap. Performance: O(n). */
+    public func index(of node: T) -> Int? {
+        return nodes.index(where: { $0 == node })
+    }
+    
+    /** Removes the first occurrence of a node from the heap. Performance: O(n log n). */
+    @discardableResult public mutating func remove(node: T) -> T? {
+        if let index = index(of: node) {
+            return remove(at: index)
+        }
+        return nil
+    }
+}
+
+let heap = Heap(array: [ 10, 7, 2, 5, 1, 16 ], sort: >)
+heap.nodes
+
+/*
+ Priority Queue, a queue where the most "important" items are at the front of
+ the queue.
+ The heap is a natural data structure for a priority queue, so this object
+ simply wraps the Heap struct.
+ All operations are O(lg n).
+ Just like a heap can be a max-heap or min-heap, the queue can be a max-priority
+ queue (largest element first) or a min-priority queue (smallest element first).
+ */
+
+public struct ProrityQueue<T> {
+    fileprivate var heap: Heap<T>
+    
+    /*
+     To create a max-priority queue, supply a > sort function. For a min-priority
+     queue, use <.
+     */
+    public init(sort: @escaping (T, T) -> Bool) {
+        heap = Heap(sort: sort)
+    }
+    
+    public var isEmpty: Bool {
+        return heap.isEmpty
+    }
+    
+    public var count: Int {
+        return heap.count
+    }
+    
+    public func peek() -> T? {
+        return heap.peek()
+    }
+    
+    public mutating func enqueue(_ element: T) {
+        heap.insert(element)
+    }
+    
+    public mutating func dequeue() -> T? {
+        return heap.remove()
+    }
+    
+    /*
+     Allows you to change the priority of an element. In a max-priority queue,
+     the new priority should be larger than the old one; in a min-priority queue
+     it should be smaller.
+     */
+    public mutating func changePrority(index i: Int, value: T) {
+        return heap.replace(index: i, value: value)
+    }
+}
+
+extension ProrityQueue where T: Equatable {
+    public func index(of element: T) -> Int? {
+        return heap.index(of: element)
+    }
+}
+
+/*
+ Prority Queue can also be implemented by an ordered array.
+ An ordered array. When you add a new item to this array, it is inserted in
+ sorted position.
+ */
+public struct OrderedArray<T: Comparable> {
+    private var array = [T]()
+    
+    public init(array: [T]) {
+        self.array = array
+    }
+    
+    public var isEmpty: Bool {
+        return array.isEmpty
+    }
+    
+    public var count: Int {
+        return array.count
+    }
+    
+    public subscript(index: Int) -> T {
+        return array[index]
+    }
+    
+    public mutating func removeAtIndex(index: Int) -> T {
+        return array.remove(at: index)
+    }
+    
+    public mutating func removeAll() {
+        array.removeAll()
+    }
+    
+    public mutating func insert(_ newElement: T) -> Int {
+        let i = findInsertionPoint(newElement)
+        array.insert(newElement, at: i)
+        return i
+    }
+    
+    // Fast version that uses a binary search to look at every element in the array.
+    public func findInsertionPoint(_ newElement: T) -> Int {
+        var startIndex = 0
+        var endIndex = array.count
+        
+        while startIndex < endIndex {
+            let midIndex = startIndex + (endIndex - startIndex) / 2
+            if array[midIndex] == newElement {
+                return midIndex
+            } else if array[midIndex] < newElement {
+                startIndex = midIndex + 1
+            } else {
+                endIndex = midIndex
+            }
+        }
+        return startIndex
+    }
+}
+
+extension OrderedArray: CustomStringConvertible {
+    public var description: String {
+        return array.description
+    }
+}
+
+var a = OrderedArray<Int>(array: [5, 1, 3, 9, 7, -1])
+a              // [-1, 1, 3, 5, 7, 9]
+a.insert(4)    // inserted at index 3
+a              // [-1, 1, 3, 4, 5, 7, 9]
+a.insert(-2)   // inserted at index 0
+a.insert(10)   // inserted at index 8
+a              // [-2, -1, 1, 3, 4, 5, 7, 9, 10]
+
+//: # QuadTree
+// A quadtree is a tree in which each internal (not leaf) node has four children.
+public struct Point {
+    let x: Double
+    let y: Double
+    
+    public init(_ x: Double, _ y: Double) {
+        self.x = x
+        self.y = y
+    }
+}
+
+extension Point: CustomStringConvertible {
+    public var description: String {
+        return "Point(\(x), \(y))"
+    }
+}
+
+public struct Size: CustomStringConvertible {
+    var xLength: Double
+    var yLength: Double
+    
+    public init(xLength: Double, yLength: Double) {
+        precondition(xLength >= 0, "xLength can not be negative")
+        precondition(yLength >= 0, "yLength can not be negative")
+        self.xLength = xLength
+        self.yLength = yLength
+    }
+    
+    var half: Size {
+        return Size(xLength: xLength / 2, yLength: yLength / 2)
+    }
+    
+    public var description: String {
+        return "Size(\(xLength), \(yLength))"
+    }
+}
+
+public struct Rect {
+    // left top vertice
+    var origin: Point
+    var size: Size
+    
+    public init(origin: Point, size: Size) {
+        self.origin = origin
+        self.size = size
+    }
+    
+    var minX: Double {
+        return origin.x
+    }
+    
+    var minY: Double {
+        return origin.y
+    }
+    
+    var maxX: Double {
+        return origin.x + size.xLength
+    }
+    
+    var maxY: Double {
+        return origin.y + size.yLength
+    }
+    
+    func containts(point: Point) -> Bool {
+        return (minX <= point.x && point.x <= maxX) &&
+            (minY <= point.y && point.y <= maxY)
+    }
+    
+    var leftTopRect: Rect {
+        return Rect(origin: origin, size: size.half)
+    }
+    
+    var leftBottomRect: Rect {
+        return Rect(origin: Point(origin.x, origin.y + size.half.yLength), size: size.half)
+    }
+    
+    var rightTopRect: Rect {
+        return Rect(origin: Point(origin.x + size.half.xLength, origin.y), size: size.half)
+    }
+    
+    var rightBottomRect: Rect {
+        return Rect(origin: Point(origin.x + size.half.xLength, origin.y + size.half.yLength), size: size.half)
+    }
+    
+    func intersects(rect: Rect) -> Bool {
+        
+        func lineSegmentsIntersect(lStart: Double, lEnd: Double, rStart: Double, rEnd: Double) -> Bool {
+            return max(lStart, rStart) <= min(lEnd, rEnd)
+        }
+        // to intersect, both horizontal and vertical projections need to intersect
+        // horizontal
+        if !lineSegmentsIntersect(lStart: minX, lEnd: maxX, rStart: rect.minX, rEnd: rect.maxX) {
+            return false
+        }
+        
+        // vertical
+        return lineSegmentsIntersect(lStart: minY, lEnd: maxY, rStart: rect.minY, rEnd: rect.maxY)
+    }
+}
+
+extension Rect: CustomStringConvertible {
+    public var description: String {
+        return "Rect(\(origin), \(size))"
+    }
+}
+
+protocol PointsContainer {
+    func add(point: Point) -> Bool
+    func points(inRect rect: Rect) -> [Point]
+}
+
+class QuadTreeNode {
+    
+    enum NodeType {
+        case leaf
+        case `internal`(children: Children)
+    }
+    
+    struct Children: Sequence {
+        let leftTop: QuadTreeNode
+        let leftBottom: QuadTreeNode
+        let rightTop: QuadTreeNode
+        let rightBottom: QuadTreeNode
+        
+        init(parentNode: QuadTreeNode) {
+            leftTop = QuadTreeNode(rect: parentNode.rect.leftTopRect)
+            leftBottom = QuadTreeNode(rect: parentNode.rect.leftBottomRect)
+            rightTop = QuadTreeNode(rect: parentNode.rect.rightTopRect)
+            rightBottom = QuadTreeNode(rect: parentNode.rect.rightBottomRect)
+        }
+        
+        struct ChildrenIterator: IteratorProtocol {
+            private var index = 0
+            private let children: Children
+            
+            init(children: Children) {
+                self.children = children
+            }
+            
+            mutating func next() -> QuadTreeNode? {
+                
+                defer { index += 1 }
+                
+                switch index {
+                case 0: return children.leftTop
+                case 1: return children.leftBottom
+                case 2: return children.rightTop
+                case 3: return children.rightBottom
+                default: return nil
+                }
+            }
+        }
+        
+        public func makeIterator() -> ChildrenIterator {
+            return ChildrenIterator(children: self)
+        }
+    }
+    
+    var points: [Point] = []
+    let rect: Rect
+    var type: NodeType = .leaf
+    
+    static let maxPointCapacity = 3
+    
+    init(rect: Rect) {
+        self.rect = rect
+    }
+    
+    var recursiveDescription: String {
+        return recursiveDescription(withTabCount: 0)
+    }
+    
+    private func recursiveDescription(withTabCount count: Int) -> String {
+        let indent = String(repeating: "\t", count: count)
+        var result = "\(indent)" + description + "\n"
+        switch type {
+        case .internal(let children):
+            for child in children {
+                result += child.recursiveDescription(withTabCount: count + 1)
+            }
+        default:
+            break
+        }
+        return result
+    }
+}
+
+extension QuadTreeNode: PointsContainer {
+    
+    @discardableResult
+    func add(point: Point) -> Bool {
+        if !rect.containts(point: point) {
+            return false
+        }
+        
+        switch type {
+        case .internal(let children):
+            // pass the point to one of the children
+            for child in children {
+                if child.add(point: point) {
+                    return true
+                }
+            }
+            
+            fatalError("rect.containts evaluted to true, but none of the children added the point")
+        case .leaf:
+            points.append(point)
+            // if the max capacity was reached, become an internal node
+            if points.count == QuadTreeNode.maxPointCapacity {
+                subdivide()
+            }
+        }
+        return true
+    }
+    
+    private func subdivide() {
+        switch type {
+        case .leaf:
+            type = .internal(children: Children(parentNode: self))
+        case .internal:
+            preconditionFailure("Calling subdivide on an internal node")
+        }
+    }
+    
+    func points(inRect rect: Rect) -> [Point] {
+        
+        // if the node's rect and the given rect don't intersect, return an empty array,
+        // because there can't be any points that lie the node's (or its children's) rect and
+        // in the given rect
+        if !self.rect.intersects(rect: rect) {
+            return []
+        }
+        
+        var result: [Point] = []
+        
+        // collect the node's points that lie in the rect
+        for point in points {
+            if rect.containts(point: point) {
+                result.append(point)
+            }
+        }
+        
+        switch type {
+        case .leaf:
+            break
+        case .internal(let children):
+            // recursively add children's points that lie in the rect
+            for childNode in children {
+                result.append(contentsOf: childNode.points(inRect: rect))
+            }
+        }
+        
+        return result
+    }
+}
+
+extension QuadTreeNode: CustomStringConvertible {
+    var description: String {
+        switch type {
+        case .leaf:
+            return "leaf \(rect) Points: \(points)"
+        case .internal:
+            return "parent \(rect) Points: \(points)"
+        }
+    }
+}
+
+public class QuadTree: PointsContainer {
+    
+    let root: QuadTreeNode
+    
+    public init(rect: Rect) {
+        self.root = QuadTreeNode(rect: rect)
+    }
+    
+    @discardableResult
+    public func add(point: Point) -> Bool {
+        return root.add(point: point)
+    }
+    
+    public func points(inRect rect: Rect) -> [Point] {
+        return root.points(inRect: rect)
+    }
+}
+
+extension QuadTree: CustomStringConvertible {
+    public var description: String {
+        return "Quad tree\n" + root.recursiveDescription
+    }
+}
+
+//: # B-Tree
+
+/*
+class BTreeNode<Key: Comparable, Value> {
+    /**
+     * The tree that owns the node.
+     */
+    unowned var owner: BTree<Key, Value>
+    
+    fileprivate var keys = [Key]()
+    fileprivate var values = [Value]()
+    var children: [BTreeNode]?
+    
+    var isLeaf: Bool {
+        return children == nil
+    }
+    
+    var numberOfKeys: Int {
+        return keys.count
+    }
+    
+    init(owner: BTree<Key, Value>) {
+        self.owner = owner
+    }
+    
+    convenience init(owner: BTree<Key, Value>, keys: [Key], values: [Value], children: [BTreeNode]? = nil) {
+        self.init(owner: owner)
+        self.keys += keys
+        self.values += values
+        self.children = children
+    }
+}
+
+extension BTreeNode {
+    /**
+     *  Returns the value for a given `key`, returns nil if the `key` is not found.
+     *
+     *  - Parameters:
+     *    - key: the key of the value to be returned
+     */
+    func value(for key: Key) -> Value? {
+        var index = keys.startIndex
+        
+        while (index + 1) < keys.endIndex && keys[index] < key {
+            index = (index + 1)
+        }
+        
+        if key == keys[index] {
+            return values[index]
+        } else if key < keys[index] {
+            return children?[index].value(for: key)
+        } else {
+            return children?[index + 1].value(for: key)
+        }
+    }
+}
+
+extension BTreeNode {
+    /**
+     *  Traverses the keys in order, executes `process` for every key.
+     *
+     *  - Parameters:
+     *    - process: the closure to be executed for every key
+     */
+    func traverseInOrder(_ procerss: (Key) -> Void) {
+        for i in 0..<numberOfKeys {
+            children?[i].traverseInOrder(procerss)
+            procerss(keys[i])
+        }
+        children?.last?.traverseInOrder(procerss)
+    }
+}
+
+extension BTreeNode {
+    
+    /**
+     *  Inserts `value` for `key` to the node, or to one if its descendants.
+     *
+     *  - Parameters:
+     *    - value: the value to be inserted for `key`
+     *    - key: the key for the `value`
+     */
+    func insert(_ value: Value, for key: Key) {
+        var index = keys.startIndex
+        
+        while index < keys.endIndex && keys[index] < key {
+            index += 1
+        }
+        
+        if index < keys.endIndex && keys[index] == key {
+            values[index] = value
+            return
+        }
+        
+        if isLeaf {
+            keys.insert(key, at: index)
+            values.insert(value, at: index)
+            owner.numberOfKeys += 1
+        } else {
+            children![index].insert(value, for: key)
+            if children![index].numberOfKeys > owner.order * 2 {
+                // TODO: - <#todo#>
+            }
+        }
+    }
+}
+
+public class BTree<Key: Comparable, Value> {
+    
+}
+
+ */
