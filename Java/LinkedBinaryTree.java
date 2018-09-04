@@ -2,6 +2,7 @@ import java.util.Stack;
 
 /**
  * LinkedBinaryTree
+ * 
  */
 public class LinkedBinaryTree implements BinaryTree {
     protected BinaryTreeNode root;
