@@ -8,7 +8,7 @@ class Solution {
 			reversed = 10 * reversed + y % 10
 			y /= 10
 		}
-		if reversed > Int.max || reversed < Int.min {
+		if reversed > Int32.max || reversed < Int32.min {
 			return 0
 		} else {
 			return reversed
@@ -17,4 +17,4 @@ class Solution {
 }
 
 let solution = Solution()
-solution.reverse(1234567890)
+solution.reverse(1534236469)
