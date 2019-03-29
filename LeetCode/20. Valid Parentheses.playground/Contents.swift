@@ -27,41 +27,22 @@
 
 class Solution {
 	func isValid(_ s: String) -> Bool {
-		let chars = s.map { $0 }
+        let chars: [Character] = Array(s)
+        let dict: [Character: Character] = ["]": "[", "}": "{", ")": "("]
 		var stack = [Character]()
 		for c in chars {
-			if c == "(" || c == "[" || c == "{" {
-				stack.append(c)
-				continue
-			}
-			switch c {
-			case ")":
-				if stack.last != "(" {
-					return false
-				} else {
-					stack.removeLast()
-				}
-			case "]":
-				if stack.last != "[" {
-					return false
-				} else {
-					stack.removeLast()
-				}
-			case "}":
-				if stack.last != "{" {
-					return false
-				} else {
-					stack.removeLast()
-				}
-			default: return false
-			}
+            if dict.values.contains(c) {
+                stack.append(c)
+            } else if dict.keys.contains(c) {
+                if stack == [] || dict[c] != stack.popLast()! {
+                    return false
+                }
+            } else {
+                return false
+            }
 			
 		}
-		if stack.count != 0 {
-			return false
-		} else {
-			return true
-		}
+		return stack.count == 0
 	}
 }
 
