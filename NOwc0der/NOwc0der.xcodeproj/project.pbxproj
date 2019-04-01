@@ -10,6 +10,7 @@
 		D3241FA22250DDF200FC6FAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3241FA12250DDF200FC6FAA /* main.swift */; };
 		D3241FAA2250DE2C00FC6FAA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3241FA92250DE2C00FC6FAA /* String.swift */; };
 		D3241FAC2250E1D000FC6FAA /* KMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3241FAB2250E1D000FC6FAA /* KMP.swift */; };
+		D349D7FD2251F8AE00B0A4F6 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D7FC2251F8AE00B0A4F6 /* Sort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		D3241FA12250DDF200FC6FAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D3241FA92250DE2C00FC6FAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D3241FAB2250E1D000FC6FAA /* KMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMP.swift; sourceTree = "<group>"; };
+		D349D7FC2251F8AE00B0A4F6 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		D3241FA02250DDF200FC6FAA /* NOwc0der */ = {
 			isa = PBXGroup;
 			children = (
+				D349D7FB2251F89F00B0A4F6 /* Sort */,
 				D3241FA82250DE0800FC6FAA /* String */,
 				D3241FA12250DDF200FC6FAA /* main.swift */,
 			);
@@ -74,6 +77,14 @@
 				D3241FAB2250E1D000FC6FAA /* KMP.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		D349D7FB2251F89F00B0A4F6 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				D349D7FC2251F8AE00B0A4F6 /* Sort.swift */,
+			);
+			path = Sort;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3241FAC2250E1D000FC6FAA /* KMP.swift in Sources */,
+				D349D7FD2251F8AE00B0A4F6 /* Sort.swift in Sources */,
 				D3241FAA2250DE2C00FC6FAA /* String.swift in Sources */,
 				D3241FA22250DDF200FC6FAA /* main.swift in Sources */,
 			);

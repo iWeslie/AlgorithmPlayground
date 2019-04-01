@@ -23,4 +23,3 @@ class Solution(object):
         return s[start:end]
 
 Solution().longestPalindrome("babad")
-i

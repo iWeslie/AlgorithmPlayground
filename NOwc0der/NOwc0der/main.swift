@@ -18,3 +18,7 @@ print(aSentence + " -> " + reversedSentence)
 
 let rotated = rotate("ABCDE", by: 2)
 print("reversed result: \(rotated)")
+
+
+let nums = [3, 6, 5, 7, 0, 4, 1, 2]
+print(selectionSort(nums))
