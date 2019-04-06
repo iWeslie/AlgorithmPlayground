@@ -41,3 +41,49 @@ class Solution {
 }
 var array: [Character] = ["h","e","l","l","o"]
 Solution().reverseString(&array)
+
+
+enum EmptyReturn: Error {
+    case EmptyReturnValue
+}
+
+class UserMainCode {
+    
+    func house(input1: Int, input2: Int) -> Int {
+        let root = createTree(val: input1, j: input2)
+        
+        return count
+    }
+    
+    var memo = [Int]()
+    var count = 0
+    
+    func createTree(val: Int, j: Int) -> Node? {
+        if val == j || memo.contains(val) {
+            if val == j {
+                count += 1
+            }
+            memo.removeLast()
+            return nil
+        }
+        
+        memo.append(val)
+        let root = Node(val)
+        root.left = createTree(val: val + 1, j: j)
+        root.right = createTree(val: (val + j / 2) % j, j: j)
+        
+        return root
+        
+    }
+}
+
+
+class Node {
+    var val: Int
+    var left: Node?
+    var right: Node?
+    
+    init(_ val: Int) {
+        self.val = val
+    }
+}
