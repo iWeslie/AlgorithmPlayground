@@ -27,6 +27,14 @@ class Solution(object):
             current.next = l2
         return dummy.next
 
+    def mergeTwoLists2(self, l1, l2):
+        if not l1 and not l2: return None
+        if not l1 and l2: return l2
+        if not l2 and l1: return l1
 
-solution = Solution()
-solution.mergeTwoLists(ListNode(1), ListNode(2))
+        if l1.val <= l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
