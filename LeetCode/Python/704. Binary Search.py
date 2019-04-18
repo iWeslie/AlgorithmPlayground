@@ -6,13 +6,12 @@ class Solution(object):
         :rtype: int
         """
         l, r = 0, len(nums) - 1
-        m = r // 2
-        while l < r:
+        while l <= r:
             m = l + (r - l) // 2
             if nums[m] < target:
-                l = m
+                l = m + 1
             elif nums[m] > target:
-                r = m
+                r = m - 1
             elif nums[m] == target:
                 return m
         return -1
