@@ -10,7 +10,7 @@ insert into Scores (Id, Score) values ('6', '3.65')
 SELECT
     Score,
     (
-        SELECT COUNT(DISTINCT Score) FROM Score WHERE Score >= Score.Score
+        SELECT count(distinct Score) FROM Scores WHERE Score >= s.Score
     ) Rank
-FROM Scores
+FROM Scores s
 ORDER BY Score DESC
