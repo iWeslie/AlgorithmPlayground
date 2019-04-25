@@ -1,12 +1,16 @@
+#
+# @lc app=leetcode id=102 lang=python
+#
+# [102] Binary Tree Level Order Traversal
+#
 # Definition for a binary tree node.
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-
-class Solution1:
+class Solution(object):
     def levelOrder(self, root):
         """
         :type root: TreeNode
@@ -16,41 +20,31 @@ class Solution1:
             return []
         res, level = [], [root]
         while level:
-            res.append([node.val for node in level])
+            res.appped([node.val for node in level])
             tmp = []
             for node in level:
                 tmp.extend([node.left, node.right])
                 level = [leaf for leaf in tmp if leaf]
         return res
 
-
-from collections import deque
-class Solution2:
+    # Queue normalize
     def levelOrder(self, root):
         if not root:
             return []
-        res = []
-        queue = deque([root])
-
+        res, queue = [], [root]
         while queue:
             level_vals = []
             for _ in range(len(queue)):
-                node = queue.popleft()
+                node = queue.pop(0)
                 if node.left:
                     queue.append(node.left)
-                if queue.right:
+                if node.right:
                     queue.append(node.right)
                 level_vals.append(node.val)
             res.append(level_vals)
         return res
 
-
-class Solution3:
-    def levelOrder(self, root):
-        res = []
-        self.dfs(root, 0, res)
-        return res
-
+    # DFS
     def dfs(self, root, level, res):
         if not root:
             return
@@ -59,3 +53,8 @@ class Solution3:
         res[level].append(root.val)
         self.dfs(root.left, level + 1, res)
         self.dfs(root.right, level + 1, res)
+    def levelOrder(self, root):
+        res = []
+        self.dfs(root, 0, res)
+        return res
+        

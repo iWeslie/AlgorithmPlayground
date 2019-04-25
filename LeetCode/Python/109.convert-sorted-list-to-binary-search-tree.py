@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=109 lang=python
+#
+# [109] Convert Sorted List to Binary Search Tree
+#
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
@@ -12,7 +17,7 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
-    # recursion + array conversion
+    # Convert to Array
     def sortedListToBST(self, head):
         """
         :type head: ListNode
@@ -24,32 +29,33 @@ class Solution(object):
             head = head.next
 
         def helper(nums):
-            if not nums: return
+            if not nums:
+                return
             i = len(nums) // 2
             root = TreeNode(nums[i])
             root.left = helper(nums[:i])
             root.right = helper(nums[i+1:])
-
             return root
 
         return helper(nums)
 
-    # recursion withput array conversion
+    # Find middle of list(Two Pointer)
     def findMiddle(self, head):
         prev, slow, fast = None, head, head
         while fast and fast.next:
-            prev, slow, fast = slow, slow.next, fast.next.next
-        if prev:  # tear down to two lists
+            prev, slow, fast = slow, fast, fast.next.next
+        if prev:  # taer down to two lists
             prev.next = None
         return slow
 
     def sortedListToBST(self, head):
-        if not head: return
+        if not head:
+            return
         mid = self.findMiddle(head)
         node = TreeNode(mid.val)
         if head == mid:
             return node
-
         node.left = self.sortedListToBST(head)
         node.right = self.sortedListToBST(mid.next)
         return node
+

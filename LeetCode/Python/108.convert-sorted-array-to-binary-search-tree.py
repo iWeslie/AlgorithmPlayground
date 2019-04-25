@@ -1,10 +1,14 @@
+#
+# @lc app=leetcode id=108 lang=python
+#
+# [108] Convert Sorted Array to Binary Search Tree
+#
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
-
 
 class Solution(object):
     def sortedArrayToBST(self, nums):
@@ -21,3 +25,4 @@ class Solution(object):
         root.right = self.sortedArrayToBST(nums[i+1:])
 
         return root
+

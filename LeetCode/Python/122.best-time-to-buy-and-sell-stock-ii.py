@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=122 lang=python
+#
+# [122] Best Time to Buy and Sell Stock II
+#
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -9,3 +14,4 @@ class Solution(object):
             if prices[i] > prices[i-1]:
                 max_profit += prices[i] - prices[i-1]
         return max_profit
+
