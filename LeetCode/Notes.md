@@ -10,7 +10,7 @@
 
 53. Maximum Subarray
 
-==[Kadane's algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem)== $\mathcal{O}(n),\mathcal{O}(1) $
+==[Kadane's algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem)== $\mathcal{O}(n),\mathcal{O}(1) ​$
 
 ```python
 def max_subarray(A):
@@ -88,7 +88,7 @@ f(i,j)=\left\{
   \end{array}
 \right.
 \qquad
-(i \in [0,n-1])
+(i \in [0,n-1], i \in \mathbb{N})
 $$
 
 121. Best Time to Buy and Sell Stock
@@ -97,6 +97,25 @@ let $prices=A$
 $$
 maxCurrent = max\big(0, maxCurrent+(A[i]-A[i-1])\big)\\
 maxSoFar=max(maxCurrent,maxSoFar)
+$$
+
+198. House Robber
+
+> The rob cannot break into two adjacent houses.
+
+GIven $A$, an $n$-length array representing the amount of money of each house, $A[i]$ denotes the money in $i^{th}​$ house
+
+let $robMoney=f$, $f(i)$ denotes the most money the robber can rob ending with $A[i]$
+$$
+f(i)=\left\{
+  \begin{array}{c}
+  	0 & i =0 \\
+  	A[i] & i=1 \\
+    max\big(f(i-1),\ f(i-2)+A[i-1]\big) & 2 \le i < n\\
+  \end{array}
+\right.
+\qquad
+(i \in \mathbb{N})
 $$
 
 
@@ -109,7 +128,19 @@ $$
 33. **Search in Rotated Sorted Array**
 34. **Find First and Last Position of Element in Sorted Array**
 
+# String
 
+14. **Longest Common Prefix**
+
+==[LCP array](<https://en.wikipedia.org/wiki/LCP_array>)== $\mathcal{O}(n),\mathcal{O}(n) $
+
+Let $A$ be the suffix array of the string $S=s_1,s_2,…,s_n\$$ and let $lcp(v,w)$ as denote the length of the longest common prefix between two strings $v$ and $w$. Let further denote $S[i,j]$ the substring of $S$ ranging from $i$ to $j$.
+
+Then the LCP array $H[1,n]$ s an integer array of size $n$ such that $H[1]$ is undefined and
+$$
+H[i]=lcp(S[A[i-1],n],S[A[i],n])\ for\ \forall i \in (1,n]
+$$
+ 
 
 # Tree
 
@@ -140,6 +171,8 @@ def minDepth(self, root):
 112. Path Sum(II)
 
 # // TODO:-
+
+14. **Longest Common Prefix**
 
 24. Swap Nodes in Pairs
 25. Permutations

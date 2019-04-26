@@ -1,4 +1,3 @@
-# Write your MySQL query statement below
 Create table If Not Exists Employee (Id int, Salary int)
 Truncate table Employee
 insert into Employee (Id, Salary) values ('1', '100')
