@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=98 lang=python
+#
+# [98] Validate Binary Search Tree
+#
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -24,7 +29,8 @@ class Solution(object):
 
             left = helper(node.left, lower, node.val) if node.left else True
             if left:
-                right = helper(node.right, node.val, upper) if node.right else True
+                right = helper(node.right, node.val,
+                               upper) if node.right else True
                 return right
             else:
                 return False
@@ -33,7 +39,8 @@ class Solution(object):
 
     # iterative
     def isValidBST(self, root):
-        if not root: return True
+        if not root:
+            return True
 
         stack = [(root, None, None)]
         while stack:
@@ -70,3 +77,4 @@ class Solution(object):
             root = root.right
 
         return True
+

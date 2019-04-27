@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=141 lang=python
+#
+# [141] Linked List Cycle
+#
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
@@ -19,3 +24,4 @@ class Solution(object):
             if p1 == p2:
                 return True
         return False
+        

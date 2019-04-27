@@ -25,7 +25,7 @@ def max_subarray(A):
 
 let $maxSubArray = f​$ , array = $A​$
 
-$f(A,i)​$ denotes the maximum subarray ending with $A[i]​$
+$f(A,i)$ denotes the maximum subarray ending with $A[i]$
 $$
 f(A,i)=A[i]+\left\{
   \begin{array}{c}
@@ -123,6 +123,8 @@ $$
 
 19. **Remove Nth Node From End of List**
 
+142. **Linked List Cycle II**
+
 # Binary Search
 
 33. **Search in Rotated Sorted Array**
@@ -140,7 +142,7 @@ Then the LCP array $H[1,n]$ s an integer array of size $n$ such that $H[1]$ is u
 $$
 H[i]=lcp(S[A[i-1],n],S[A[i],n])\ for\ \forall i \in (1,n]
 $$
- 
+
 
 # Tree
 
@@ -173,12 +175,10 @@ def minDepth(self, root):
 # // TODO:-
 
 14. **Longest Common Prefix**
+15. Swap Nodes in Pairs
+16. Permutations
+17. **Validate Binary Search Tree**
+18. Path Sum(II)
 
-24. Swap Nodes in Pairs
-25. Permutations
-26. **Validate Binary Search Tree**
-
-112. Path Sum(II)
-
-119. *Pascal's Triangle II*
+14. *Pascal's Triangle II*
 
