@@ -1,5 +1,9 @@
+#
+# @lc app=leetcode id=168 lang=python
+#
+# [168] Excel Sheet Column Title
+#
 class Solution(object):
-    # iterative
     def convertToTitle(self, n):
         """
         :type n: int
@@ -15,6 +19,3 @@ class Solution(object):
             n //= 26
         return res
 
-    # recursive
-    def convertToTitle(self, n):
-        return self.convertToTitle((n - 1) / 26) + chr((n - 1) % 26 + ord('A')) if n else "" 

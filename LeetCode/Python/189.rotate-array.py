@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=189 lang=python
+#
+# [189] Rotate Array
+#
 class Solution(object):
     def rotate(self, nums, k):
         """
@@ -14,3 +19,4 @@ class Solution(object):
         reverse(nums, 0, len(nums)-1)
         reverse(nums, 0, k-1)
         reverse(nums, k, len(nums)-1)
+

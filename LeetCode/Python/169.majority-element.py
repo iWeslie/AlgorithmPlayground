@@ -1,5 +1,10 @@
+#
+# @lc app=leetcode id=169 lang=python
+#
+# [169] Majority Element
+# https://leetcode.com/problems/majority-element/solution/
 class Solution(object):
-    # hash map
+    # Hash Table
     # O(n), O(n)
     def majorityElement(self, nums):
         """
@@ -11,16 +16,19 @@ class Solution(object):
             dict[i] = dict[i]+1 if dict.get(i) else 1
         times = len(nums) // 2
         for k, v in dict.items():
-            if v > times: return k
+            if v > times:
+                return k
 
     # Sorting
-    # O(logn), O(1)
+    # the majority element can be found at ⌊n/2⌋
+    # O(nlogn), O(1)
     def majorityElement(self, nums):
         nums.sort()
         return nums[len(nums)//2]
 
     # Randomization
-    # O(n)(O(∞)), O(1)
+    # random pick a number in array
+    # O(n)(∞), O(1)
     def majorityElement(self, nums):
         count = len(nums) // 2
         while True:
@@ -33,12 +41,14 @@ class Solution(object):
     # O(nlogn), O(logn)
     def majorityElement(self, nums):
         def helper(l, r):
-            if l == r: return nums[l]
+            if l == r:
+                return nums[l]
             m = l + (r - l) // 2
             l = helper(l, m)
             r = helper(m+1, r)
 
-            if l == r: return l
+            if l == r:
+                return l
 
             l_count = sum(1 for i in range(l, r+1) if nums[i] == l)
             r_count = sum(1 for i in range(l, r+1) if nums[i] == r)
@@ -59,3 +69,4 @@ class Solution(object):
             count += (1 if num == candidate else -1)
 
         return candidate
+    

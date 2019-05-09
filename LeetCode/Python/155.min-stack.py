@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=155 lang=python
+#
+# [155] Min Stack
+#
 class MinStack(object):
 
     def __init__(self):
@@ -39,3 +44,4 @@ class MinStack(object):
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+

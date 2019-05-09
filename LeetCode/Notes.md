@@ -134,7 +134,7 @@ $$
 
 14. **Longest Common Prefix**
 
-==[LCP array](<https://en.wikipedia.org/wiki/LCP_array>)== $\mathcal{O}(n),\mathcal{O}(n) $
+==[LCP array](<https://en.wikipedia.org/wiki/LCP_array>)== $\mathcal{O}(n),\mathcal{O}(n) ​$
 
 Let $A$ be the suffix array of the string $S=s_1,s_2,…,s_n\$$ and let $lcp(v,w)$ as denote the length of the longest common prefix between two strings $v$ and $w$. Let further denote $S[i,j]$ the substring of $S$ ranging from $i$ to $j$.
 
@@ -181,4 +181,21 @@ def minDepth(self, root):
 18. Path Sum(II)
 
 14. *Pascal's Triangle II*
+
+# Special
+
+169. Majority Element
+
+==Boyer–Moore majority vote algorithm==$\mathcal{O}(n),\mathcal{O}(1) $
+
+```python
+def majorityElement(self, nums):
+  i = 0
+  m = None
+  for x in nums:
+    if i == 0: m = x
+    i += (1 if m == x else -1)
+  return m
+    
+```
 

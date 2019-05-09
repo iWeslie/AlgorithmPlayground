@@ -1,3 +1,8 @@
+#
+# @lc app=leetcode id=171 lang=python
+#
+# [171] Excel Sheet Column Number
+#
 class Solution(object):
     def titleToNumber(self, s):
         """
@@ -12,3 +17,4 @@ class Solution(object):
             i -= 1
             n += 1
         return res
+
