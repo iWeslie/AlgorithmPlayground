@@ -179,8 +179,9 @@ def minDepth(self, root):
 16. Permutations
 17. **Validate Binary Search Tree**
 18. Path Sum(II)
+19. *Pascal's Triangle II*
 
-14. *Pascal's Triangle II*
+Delete Node in a BST
 
 # Special
 
