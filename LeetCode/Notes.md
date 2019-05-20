@@ -212,3 +212,7 @@ def majorityElement(self, nums):
 
 3. Longest Substring Without Repeating Characters
 
+### Floyd's Tortoise and Hare
+
+287. Find the Duplicate Number
+
