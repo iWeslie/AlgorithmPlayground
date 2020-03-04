@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3796F1B210F0AA400231FE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3796F1A210F0AA400231FE3 /* main.swift */; };
+		D3E3640223FF65DE009B4E31 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E3640123FF65DE009B4E31 /* main.swift */; };
+		D3E3641223FF6767009B4E31 /* AtlasTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E3641123FF6767009B4E31 /* AtlasTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D3796F15210F0AA400231FE3 /* CopyFiles */ = {
+		D3E363FC23FF65DE009B4E31 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +24,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D3796F17210F0AA400231FE3 /* RedBlackTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RedBlackTree; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3796F1A210F0AA400231FE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D3E363FE23FF65DE009B4E31 /* Atlas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Atlas; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E3640123FF65DE009B4E31 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D3E3640F23FF6767009B4E31 /* AtlasTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E3641123FF6767009B4E31 /* AtlasTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasTest.swift; sourceTree = "<group>"; };
+		D3E3641323FF6767009B4E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D3796F14210F0AA400231FE3 /* Frameworks */ = {
+		D3E363FB23FF65DE009B4E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E3640C23FF6767009B4E31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,95 +49,146 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D3796F0E210F0AA400231FE3 = {
+		D3E363F523FF65DE009B4E31 = {
 			isa = PBXGroup;
 			children = (
-				D3796F19210F0AA400231FE3 /* RedBlackTree */,
-				D3796F18210F0AA400231FE3 /* Products */,
+				D3E3640023FF65DE009B4E31 /* Atlas */,
+				D3E3641023FF6767009B4E31 /* AtlasTest */,
+				D3E363FF23FF65DE009B4E31 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D3796F18210F0AA400231FE3 /* Products */ = {
+		D3E363FF23FF65DE009B4E31 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3796F17210F0AA400231FE3 /* RedBlackTree */,
+				D3E363FE23FF65DE009B4E31 /* Atlas */,
+				D3E3640F23FF6767009B4E31 /* AtlasTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D3796F19210F0AA400231FE3 /* RedBlackTree */ = {
+		D3E3640023FF65DE009B4E31 /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
-				D3796F1A210F0AA400231FE3 /* main.swift */,
+				D3E3640123FF65DE009B4E31 /* main.swift */,
 			);
-			path = RedBlackTree;
+			path = Atlas;
+			sourceTree = "<group>";
+		};
+		D3E3641023FF6767009B4E31 /* AtlasTest */ = {
+			isa = PBXGroup;
+			children = (
+				D3E3641123FF6767009B4E31 /* AtlasTest.swift */,
+				D3E3641323FF6767009B4E31 /* Info.plist */,
+			);
+			path = AtlasTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3796F16210F0AA400231FE3 /* RedBlackTree */ = {
+		D3E363FD23FF65DE009B4E31 /* Atlas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3796F1E210F0AA400231FE3 /* Build configuration list for PBXNativeTarget "RedBlackTree" */;
+			buildConfigurationList = D3E3640523FF65DE009B4E31 /* Build configuration list for PBXNativeTarget "Atlas" */;
 			buildPhases = (
-				D3796F13210F0AA400231FE3 /* Sources */,
-				D3796F14210F0AA400231FE3 /* Frameworks */,
-				D3796F15210F0AA400231FE3 /* CopyFiles */,
+				D3E363FA23FF65DE009B4E31 /* Sources */,
+				D3E363FB23FF65DE009B4E31 /* Frameworks */,
+				D3E363FC23FF65DE009B4E31 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RedBlackTree;
-			productName = RedBlackTree;
-			productReference = D3796F17210F0AA400231FE3 /* RedBlackTree */;
+			name = Atlas;
+			productName = Atlas;
+			productReference = D3E363FE23FF65DE009B4E31 /* Atlas */;
 			productType = "com.apple.product-type.tool";
+		};
+		D3E3640E23FF6767009B4E31 /* AtlasTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E3641423FF6767009B4E31 /* Build configuration list for PBXNativeTarget "AtlasTest" */;
+			buildPhases = (
+				D3E3640B23FF6767009B4E31 /* Sources */,
+				D3E3640C23FF6767009B4E31 /* Frameworks */,
+				D3E3640D23FF6767009B4E31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AtlasTest;
+			productName = AtlasTest;
+			productReference = D3E3640F23FF6767009B4E31 /* AtlasTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D3796F0F210F0AA400231FE3 /* Project object */ = {
+		D3E363F623FF65DE009B4E31 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = weslie;
 				TargetAttributes = {
-					D3796F16210F0AA400231FE3 = {
-						CreatedOnToolsVersion = 10.0;
+					D3E363FD23FF65DE009B4E31 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					D3E3640E23FF6767009B4E31 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
-			buildConfigurationList = D3796F12210F0AA400231FE3 /* Build configuration list for PBXProject "RedBlackTree" */;
+			buildConfigurationList = D3E363F923FF65DE009B4E31 /* Build configuration list for PBXProject "Atlas" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = D3796F0E210F0AA400231FE3;
-			productRefGroup = D3796F18210F0AA400231FE3 /* Products */;
+			mainGroup = D3E363F523FF65DE009B4E31;
+			productRefGroup = D3E363FF23FF65DE009B4E31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D3796F16210F0AA400231FE3 /* RedBlackTree */,
+				D3E363FD23FF65DE009B4E31 /* Atlas */,
+				D3E3640E23FF6767009B4E31 /* AtlasTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D3E3640D23FF6767009B4E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		D3796F13210F0AA400231FE3 /* Sources */ = {
+		D3E363FA23FF65DE009B4E31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3796F1B210F0AA400231FE3 /* main.swift in Sources */,
+				D3E3640223FF65DE009B4E31 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E3640B23FF6767009B4E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E3641223FF6767009B4E31 /* AtlasTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D3796F1C210F0AA400231FE3 /* Debug */ = {
+		D3E3640323FF65DE009B4E31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -158,7 +220,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -177,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -187,7 +248,7 @@
 			};
 			name = Debug;
 		};
-		D3796F1D210F0AA400231FE3 /* Release */ = {
+		D3E3640423FF65DE009B4E31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -219,7 +280,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -232,7 +292,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -241,48 +301,95 @@
 			};
 			name = Release;
 		};
-		D3796F1F210F0AA400231FE3 /* Debug */ = {
+		D3E3640623FF65DE009B4E31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4UXX38SJ8T;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		D3796F20210F0AA400231FE3 /* Release */ = {
+		D3E3640723FF65DE009B4E31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4UXX38SJ8T;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D3E3641523FF6767009B4E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4UXX38SJ8T;
+				INFOPLIST_FILE = AtlasTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weslie.AtlasTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D3E3641623FF6767009B4E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4UXX38SJ8T;
+				INFOPLIST_FILE = AtlasTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weslie.AtlasTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D3796F12210F0AA400231FE3 /* Build configuration list for PBXProject "RedBlackTree" */ = {
+		D3E363F923FF65DE009B4E31 /* Build configuration list for PBXProject "Atlas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3796F1C210F0AA400231FE3 /* Debug */,
-				D3796F1D210F0AA400231FE3 /* Release */,
+				D3E3640323FF65DE009B4E31 /* Debug */,
+				D3E3640423FF65DE009B4E31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3796F1E210F0AA400231FE3 /* Build configuration list for PBXNativeTarget "RedBlackTree" */ = {
+		D3E3640523FF65DE009B4E31 /* Build configuration list for PBXNativeTarget "Atlas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3796F1F210F0AA400231FE3 /* Debug */,
-				D3796F20210F0AA400231FE3 /* Release */,
+				D3E3640623FF65DE009B4E31 /* Debug */,
+				D3E3640723FF65DE009B4E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E3641423FF6767009B4E31 /* Build configuration list for PBXNativeTarget "AtlasTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E3641523FF6767009B4E31 /* Debug */,
+				D3E3641623FF6767009B4E31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D3796F0F210F0AA400231FE3 /* Project object */;
+	rootObject = D3E363F623FF65DE009B4E31 /* Project object */;
 }
