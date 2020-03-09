@@ -10,6 +10,11 @@
 		D32281072415027100591787 /* Atlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32280FD2415027100591787 /* Atlas.framework */; };
 		D322810C2415027100591787 /* AtlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D322810B2415027100591787 /* AtlasTests.swift */; };
 		D322810E2415027100591787 /* Atlas.h in Headers */ = {isa = PBXBuildFile; fileRef = D32281002415027100591787 /* Atlas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D349694B24163C48002F94B7 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349694A24163C48002F94B7 /* Stack.swift */; };
+		D349694D24163D74002F94B7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349694C24163D74002F94B7 /* Queue.swift */; };
+		D349694F24163F3B002F94B7 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349694E24163F3B002F94B7 /* BinaryTree.swift */; };
+		D349695124163F54002F94B7 /* BST.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349695024163F54002F94B7 /* BST.swift */; };
+		D349695324166855002F94B7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349695224166855002F94B7 /* Misc.swift */; };
 		D3BE06EF241503C000C76A1B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE06EE241503C000C76A1B /* List.swift */; };
 		D3BE06F12415069700C76A1B /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE06F02415069700C76A1B /* LinkedList.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +36,11 @@
 		D32281062415027100591787 /* AtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D322810B2415027100591787 /* AtlasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasTests.swift; sourceTree = "<group>"; };
 		D322810D2415027100591787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D349694A24163C48002F94B7 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		D349694C24163D74002F94B7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		D349694E24163F3B002F94B7 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
+		D349695024163F54002F94B7 /* BST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BST.swift; sourceTree = "<group>"; };
+		D349695224166855002F94B7 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		D3BE06EE241503C000C76A1B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		D3BE06F02415069700C76A1B /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +106,11 @@
 			children = (
 				D3BE06EE241503C000C76A1B /* List.swift */,
 				D3BE06F02415069700C76A1B /* LinkedList.swift */,
+				D349694A24163C48002F94B7 /* Stack.swift */,
+				D349694C24163D74002F94B7 /* Queue.swift */,
+				D349694E24163F3B002F94B7 /* BinaryTree.swift */,
+				D349695224166855002F94B7 /* Misc.swift */,
+				D349695024163F54002F94B7 /* BST.swift */,
 			);
 			path = "Data Structure";
 			sourceTree = "<group>";
@@ -210,8 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D349694F24163F3B002F94B7 /* BinaryTree.swift in Sources */,
+				D349695124163F54002F94B7 /* BST.swift in Sources */,
 				D3BE06F12415069700C76A1B /* LinkedList.swift in Sources */,
+				D349694B24163C48002F94B7 /* Stack.swift in Sources */,
+				D349695324166855002F94B7 /* Misc.swift in Sources */,
 				D3BE06EF241503C000C76A1B /* List.swift in Sources */,
+				D349694D24163D74002F94B7 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

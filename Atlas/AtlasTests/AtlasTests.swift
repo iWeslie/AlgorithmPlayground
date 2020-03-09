@@ -26,6 +26,8 @@ class AtlasTests: XCTestCase {
         XCTAssertEqual(list.index(of: 0), 0)
         XCTAssertEqual(list.index(of: 1), -1)
         XCTAssertFalse(list.isEmpty)
+        
+        print(list)
     }
 
 //    func testPerformanceExample() {
@@ -34,5 +36,10 @@ class AtlasTests: XCTestCase {
 //            // Put the code you want to measure the time of here.
 //        }
 //    }
+    
+    func testBinaryTree() {
+        let bst = BST<Int>([7, 4, 9, 2, 5, 8, 11, 1, 3, 12])
+        
+    }
 
 }

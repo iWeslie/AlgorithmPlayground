@@ -7,7 +7,7 @@
 //
 
 /// Sequencial List Protocol
-public protocol List {
+public protocol List: CustomStringConvertible {
     associatedtype T
     
     var size: Int { get }
