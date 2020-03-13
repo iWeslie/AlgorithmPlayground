@@ -80,6 +80,7 @@ public class LinkedList<T>: List {
     /// Remove the element at specified index.
     /// - Parameter index: The index of the element.
     /// - Returns: The element's value to be removed.
+    @discardableResult
     public func remove(at index: Int) -> T {
         _checkRange(index)
         
@@ -119,6 +120,16 @@ public class LinkedList<T>: List {
         desc += "]"
         return desc
     }
+    
+    public var array: [T] {
+        var res: [T] = []
+        var cur = head
+        while cur != nil {
+            res.append(cur!.value)
+            cur = cur?.next
+        }
+        return res
+    }
 }
 
 extension LinkedList where T: Comparable {
@@ -143,3 +154,4 @@ extension LinkedList where T: Comparable {
         return -1
     }
 }
+

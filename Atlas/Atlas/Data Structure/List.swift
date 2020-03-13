@@ -12,6 +12,7 @@ public protocol List: CustomStringConvertible {
     
     var size: Int { get }
     var description: String { get }
+    var array: [T] { get }
     
     func insert(_ value: T, at index: Int)
     func set(_ value: T, at index: Int) -> T

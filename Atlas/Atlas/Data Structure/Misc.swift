@@ -6,7 +6,6 @@
 //  Copyright © 2020 weslie. All rights reserved.
 //
 
-
 public func treeString<T>(_ node: T,
                           reversed: Bool = false,
                           isTop: Bool = true,

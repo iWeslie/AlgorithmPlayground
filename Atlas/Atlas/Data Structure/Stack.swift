@@ -22,6 +22,11 @@ public class Stack<T>: CustomStringConvertible {
         return elements.last
     }
     
+    public init() { }
+    public init(_ array: [T]) {
+        array.forEach(push)
+    }
+    
     public func push(_ element: T) {
         elements.append(element)
     }

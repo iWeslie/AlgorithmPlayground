@@ -18,12 +18,17 @@ public class Queue<T>: CustomStringConvertible {
         return size == 0
     }
     
+    public init() { }
+    public init(_ array: [T]) {
+        array.forEach(enqueue)
+    }
+    
     public func enqueue(_ element: T) {
         elements.append(element)
     }
     
-    public func dequeue(_ element: T) {
-        elements.removeFirst()
+    public func dequeue() -> T {
+        return elements.removeFirst()
     }
     
     public var front: T? {

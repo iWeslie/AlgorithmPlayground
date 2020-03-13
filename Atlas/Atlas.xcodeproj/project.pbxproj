@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31C96C8241B7E3400AB7239 /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31C96C7241B7E3400AB7239 /* LinkedListTests.swift */; };
+		D31C96CA241B883D00AB7239 /* StackAndQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31C96C9241B883D00AB7239 /* StackAndQueueTests.swift */; };
 		D32281072415027100591787 /* Atlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32280FD2415027100591787 /* Atlas.framework */; };
-		D322810C2415027100591787 /* AtlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D322810B2415027100591787 /* AtlasTests.swift */; };
 		D322810E2415027100591787 /* Atlas.h in Headers */ = {isa = PBXBuildFile; fileRef = D32281002415027100591787 /* Atlas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D349694B24163C48002F94B7 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349694A24163C48002F94B7 /* Stack.swift */; };
 		D349694D24163D74002F94B7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349694C24163D74002F94B7 /* Queue.swift */; };
@@ -30,11 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D31C96C7241B7E3400AB7239 /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
+		D31C96C9241B883D00AB7239 /* StackAndQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackAndQueueTests.swift; sourceTree = "<group>"; };
 		D32280FD2415027100591787 /* Atlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32281002415027100591787 /* Atlas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
 		D32281012415027100591787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D32281062415027100591787 /* AtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D322810B2415027100591787 /* AtlasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasTests.swift; sourceTree = "<group>"; };
 		D322810D2415027100591787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D349694A24163C48002F94B7 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		D349694C24163D74002F94B7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -95,7 +97,8 @@
 		D322810A2415027100591787 /* AtlasTests */ = {
 			isa = PBXGroup;
 			children = (
-				D322810B2415027100591787 /* AtlasTests.swift */,
+				D31C96C7241B7E3400AB7239 /* LinkedListTests.swift */,
+				D31C96C9241B883D00AB7239 /* StackAndQueueTests.swift */,
 				D322810D2415027100591787 /* Info.plist */,
 			);
 			path = AtlasTests;
@@ -239,7 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D322810C2415027100591787 /* AtlasTests.swift in Sources */,
+				D31C96CA241B883D00AB7239 /* StackAndQueueTests.swift in Sources */,
+				D31C96C8241B7E3400AB7239 /* LinkedListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
